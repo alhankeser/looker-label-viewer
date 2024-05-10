@@ -13,6 +13,9 @@
     "onLanguage:lookml"
   ],
   "keywords": ["looker", "lookml", "lkml"],
+  "repository": {
+    "url": "https://github.com/alhankeser/looker-label-viewer"
+  },
   "main": "./extension.js",
   "contributes": {},
   "scripts": {

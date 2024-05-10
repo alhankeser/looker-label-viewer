@@ -9,13 +9,8 @@ function watchHover() {
 			const key = splitText[0].trim();
 			const val = splitText.slice(1).join(':').trim().replace(/['"]+/g, '');
 			
-			if (['label', 'view_label', 'group_label', 'group_item_label'].indexOf(key) > -1) {
+			if (['label', 'view_label', 'group_label', 'group_item_label', 'description'].indexOf(key) > -1) {
 				const result = labelLookup[val];
-				if (result == undefined) {
-					return {
-						contents: ['Not found in localization file']
-					}
-				}
 				return {
 					contents: [result]
 				};
