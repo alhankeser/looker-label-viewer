@@ -2,7 +2,7 @@
   "name": "lookerlabelviewer",
   "displayName": "Looker Label Viewer",
   "description": "See localized labels in lookml files.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -19,7 +19,19 @@
   "icon": "icon.png",
   "publisher": "alhankeser",
   "main": "./extension.js",
-  "contributes": {},
+  "contributes": {
+    "configuration": {
+      "title": "Looker Label Viewer",
+      "properties": {
+        "lookerlabelviewer.localizedStringsFileName": {
+          "type": ["string"],
+          "editPresentation": "singlelineText",
+          "default": "en.strings.json",
+          "description": "Specifices the name of the localized strings file to use for label previews."
+        }
+      }
+    }
+  },
   "scripts": {
     "lint": "eslint .",
     "pretest": "npm run lint",
