@@ -17,6 +17,7 @@
     "url": "https://github.com/alhankeser/looker-label-viewer"
   },
   "icon": "icon.png",
+  "publisher": "alhankeser",
   "main": "./extension.js",
   "contributes": {},
   "scripts": {
