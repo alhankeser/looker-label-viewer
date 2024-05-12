@@ -1,5 +1,6 @@
 const vscode = require('vscode');
 let labelLookup = {};
+const localizedStringsFileName = vscode.workspace.getConfiguration('lookerlabelviewer').get('localizedStringsFileName');
 
 function watchHover() {
 	vscode.languages.registerHoverProvider('lookml', {
@@ -22,7 +23,7 @@ function watchHover() {
 function updateLabelLookup() {
 	if (vscode.workspace.workspaceFolders) {
 		vscode.workspace.workspaceFolders.forEach((folder) => {
-			vscode.workspace.findFiles(new vscode.RelativePattern(folder, '**/en.strings.json'), '', 1)
+			vscode.workspace.findFiles(new vscode.RelativePattern(folder, '**/' + localizedStringsFileName), '', 1)
 			.then((uris) => {
 				const uri = uris[0];
 				vscode.workspace.fs.readFile(uri).then((result) => {
@@ -43,7 +44,7 @@ function activate() {
 }
 
 vscode.workspace.onDidChangeTextDocument(event => {
-	if (event.document.uri.path.endsWith('strings.json')) {
+	if (event.document.uri.path.endsWith(localizedStringsFileName)) {
 		updateLabelLookup()
 	}
 });
